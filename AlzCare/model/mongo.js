@@ -5,8 +5,11 @@ var mongoSchema =   mongoose.Schema;
 
 var userSchema  = {
     "pat_phone" : String,
+    "pat_name" : String,
     "care_phone" : String,
-    "password" : String
+    "care_name" : String,
+    "password" : String,
+    "address" : String
 };
 
 module.exports = mongoose.model('userLogin',userSchema);
