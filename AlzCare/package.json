@@ -1,0 +1,21 @@
+{
+  "name": "nodeMongo",
+  "version": "1.0.0",
+  "description": "AlzCare MongoDB Server.",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {},
+  "keywords": [
+    "Node.js",
+    "mongoDb"
+  ],
+  "author": "Shivani Bhatia",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.2"
+  }
+}
