@@ -41,7 +41,7 @@ router.route("/users")
 
         var query = {
             pat_phone: db.pat_phone,
-            pat_name: db.pat_name;
+            pat_name: db.pat_name,
             care_phone: db.care_phone,
             care_name: db.care_name,
             password: db.password,
@@ -73,6 +73,7 @@ router.route("/users")
 
     });
 
+// for caregiver login
 router.route("/users/care/:phone&:password")
     // gets user with specific phone number and password combo
     .get(function(req, res) {
@@ -81,42 +82,33 @@ router.route("/users/care/:phone&:password")
         let care_phone = req.params.phone;
         let password = req.params.password;
 
-        //return res.send({"phone": care_phone, "pass": password});
-
-        var query = {
-            care_phone: care_phone,
-            password: password
-        };
-
-        //return res.send({query});
-
-        mongoOp.find({query}, function(err, data) {
+        mongoOp.find({care_phone: care_phone, password: password}, function(err, data) {
             if (err) {
                 response = {"error": true, "message": "Error fetching data"};
+                return res.send(response);
 
             }
             else if (!data) {
                 response = {"error": true, "message": "User does not exist"};
+                return res.send(response);
             }
             else {
                 response = {"error": false, "message": data};
+                return res.send(response);
             }
-            return res.send(response);
+            
         });
     });
 
+// for patient login
 router.route("/users/pat/:phone&:password")
     // gets user with specific phone number and password combo
     .get(function(req, res) {
+        
         let pat_phone = req.params.phone;
         let password = req.params.password;
 
-        var query = {
-            pat_phone: pat_phone,
-            password: password
-        };
-
-        mongoOp.find({query}, function(err, data) {
+        mongoOp.find({pat_phone: pat_phone, password: password}, function(err, data) {
             if (err) {
                 response = {"error": true, "message": "Error fetching data"};
 
