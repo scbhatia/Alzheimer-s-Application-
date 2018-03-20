@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14101" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b16-yJ-uTe">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Home" id="BYZ-38-t0r" customClass="ViewController" customModule="alzhaimers_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyV-TY-a4k">
+                                <rect key="frame" x="168" y="237" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <segue destination="N6O-B3-0Nz" kind="show" identifier="Login" id="FjK-m2-e8d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jdN-jd-pdQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="713" y="-564"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="82z-p4-6Ss">
+            <objects>
+                <viewController title="Login" id="N6O-B3-0Nz" customClass="LoginPageViewController" customModule="alzhaimers_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vFd-xR-xx7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjk-xz-iut">
+                                <rect key="frame" x="31" y="71" width="313" height="466"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z34-dC-YQx">
+                                        <rect key="frame" x="8" y="229" width="297" height="12"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="PHONE NUMBER" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rmt-cw-0aw">
+                                        <rect key="frame" x="8" y="241" width="297" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="AKn-pQ-luo"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyR-aX-yjf">
+                                        <rect key="frame" x="7" y="277" width="298" height="12"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdW-D9-2O3">
+                                        <rect key="frame" x="7" y="418" width="298" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="c9Q-du-Lcl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <state key="normal" title="New user? Register">
+                                            <color key="titleColor" red="0.46051210170000001" green="0.22893238069999999" blue="0.69145590069999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="IVg-i6-cE8" kind="presentation" identifier="loginToRegister" id="6pq-lx-1qG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcQ-7g-0BV">
+                                        <rect key="frame" x="7" y="359" width="298" height="32"/>
+                                        <color key="backgroundColor" red="0.46051210170000001" green="0.22893238069999999" blue="0.69145590069999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                        <state key="normal" title="LOGIN">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginBtn:" destination="N6O-B3-0Nz" eventType="touchUpInside" id="E0j-rR-2ub"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWk-hb-bEx">
+                                        <rect key="frame" x="8" y="290" width="297" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="MYq-ja-ph2"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Q4S-2u-xtI">
+                                        <rect key="frame" x="62" y="22" width="190" height="190"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="190" id="ioc-wF-pIm"/>
+                                            <constraint firstAttribute="height" constant="190" id="u9h-Mv-jvg"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Q4S-2u-xtI" firstAttribute="top" secondItem="bjk-xz-iut" secondAttribute="top" constant="22" id="5oG-K5-AKg"/>
+                                    <constraint firstAttribute="trailing" secondItem="IWk-hb-bEx" secondAttribute="trailing" constant="8" id="6k9-zJ-wc8"/>
+                                    <constraint firstItem="IWk-hb-bEx" firstAttribute="top" secondItem="bjk-xz-iut" secondAttribute="top" constant="290" id="6kB-Ki-tbN"/>
+                                    <constraint firstAttribute="bottom" secondItem="IWk-hb-bEx" secondAttribute="bottom" constant="146" id="CMD-DP-mWX"/>
+                                    <constraint firstItem="Q4S-2u-xtI" firstAttribute="centerX" secondItem="bjk-xz-iut" secondAttribute="centerX" id="Dga-Yd-HS5"/>
+                                    <constraint firstItem="HcQ-7g-0BV" firstAttribute="leading" secondItem="bjk-xz-iut" secondAttribute="leading" constant="7.5339805825242365" id="FXA-M7-mml"/>
+                                    <constraint firstItem="HcQ-7g-0BV" firstAttribute="leading" secondItem="PdW-D9-2O3" secondAttribute="leading" id="FdE-75-rwB"/>
+                                    <constraint firstItem="rmt-cw-0aw" firstAttribute="top" secondItem="z34-dC-YQx" secondAttribute="bottom" id="ICA-2T-WuG"/>
+                                    <constraint firstItem="HyR-aX-yjf" firstAttribute="leading" secondItem="bjk-xz-iut" secondAttribute="leading" constant="7" id="K9r-BC-d72"/>
+                                    <constraint firstItem="PdW-D9-2O3" firstAttribute="top" secondItem="bjk-xz-iut" secondAttribute="top" constant="418" id="PB0-nb-l0k"/>
+                                    <constraint firstItem="z34-dC-YQx" firstAttribute="leading" secondItem="bjk-xz-iut" secondAttribute="leading" constant="8" id="QZu-Mf-DFI"/>
+                                    <constraint firstItem="HcQ-7g-0BV" firstAttribute="trailing" secondItem="PdW-D9-2O3" secondAttribute="trailing" id="R0Y-WJ-48W"/>
+                                    <constraint firstItem="rmt-cw-0aw" firstAttribute="leading" secondItem="z34-dC-YQx" secondAttribute="leading" id="VAa-11-U4u"/>
+                                    <constraint firstItem="HcQ-7g-0BV" firstAttribute="top" secondItem="bjk-xz-iut" secondAttribute="top" constant="359" id="VkU-G3-qN7"/>
+                                    <constraint firstItem="IWk-hb-bEx" firstAttribute="leading" secondItem="bjk-xz-iut" secondAttribute="leading" constant="8" id="XkY-5S-KC0"/>
+                                    <constraint firstItem="HyR-aX-yjf" firstAttribute="top" secondItem="bjk-xz-iut" secondAttribute="top" constant="277" id="aT8-zs-bH4"/>
+                                    <constraint firstAttribute="trailing" secondItem="PdW-D9-2O3" secondAttribute="trailing" constant="8.5" id="cEE-bH-K52"/>
+                                    <constraint firstItem="HyR-aX-yjf" firstAttribute="top" secondItem="rmt-cw-0aw" secondAttribute="bottom" constant="6" id="dSg-Xj-qDi"/>
+                                    <constraint firstAttribute="trailing" secondItem="HcQ-7g-0BV" secondAttribute="trailing" constant="8.466019417475195" id="diY-55-nE9"/>
+                                    <constraint firstAttribute="trailing" secondItem="z34-dC-YQx" secondAttribute="trailing" constant="8" id="fgP-Vj-7Kb"/>
+                                    <constraint firstAttribute="trailing" secondItem="HyR-aX-yjf" secondAttribute="trailing" constant="8" id="o4F-ww-W4C"/>
+                                    <constraint firstItem="rmt-cw-0aw" firstAttribute="trailing" secondItem="z34-dC-YQx" secondAttribute="trailing" id="y4w-AH-qCW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PdW-D9-2O3" firstAttribute="leading" secondItem="9TQ-26-cba" secondAttribute="leading" constant="38" id="JdB-uw-Rij"/>
+                            <constraint firstItem="bjk-xz-iut" firstAttribute="top" secondItem="9TQ-26-cba" secondAttribute="top" constant="51" id="OvU-jP-Km8"/>
+                            <constraint firstItem="bjk-xz-iut" firstAttribute="centerX" secondItem="9TQ-26-cba" secondAttribute="centerX" id="Qe1-QI-clT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9TQ-26-cba"/>
+                    </view>
+                    <connections>
+                        <outlet property="passwordField" destination="IWk-hb-bEx" id="n6r-My-Anw"/>
+                        <outlet property="phoneField" destination="rmt-cw-0aw" id="jeT-vy-IfC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AoH-M5-XC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1442.4000000000001" y="-566.26686656671666"/>
+        </scene>
+        <!--Register Page View Controller-->
+        <scene sceneID="aPa-yV-OAl">
+            <objects>
+                <viewController id="IVg-i6-cE8" customClass="RegisterPageViewController" customModule="alzhaimers_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="peI-R7-7c8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PATIENT NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvV-FQ-PbS">
+                                <rect key="frame" x="15.13481228675937" y="257" width="343" height="21.000000000000114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Patient Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YQS-GX-ax6">
+                                <rect key="frame" x="15.13481228675937" y="277" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PATIENT PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyf-Sb-PEh">
+                                <rect key="frame" x="15.13481228675937" y="309" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Patient Phone Number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Mc-WX-dse">
+                                <rect key="frame" x="15.13481228675937" y="327" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CAREGIVER NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7By-9C-eoX">
+                                <rect key="frame" x="16.436860068330134" y="360" width="341.99999999999955" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CAREGIVER PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKL-iW-NhB">
+                                <rect key="frame" x="16" y="410" width="342" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Caregiver Phone Number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="s0O-th-7Sy">
+                                <rect key="frame" x="15.13481228676028" y="426" width="343.00000000000023" height="29.999999999999943"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBE-Lf-t6p">
+                                <rect key="frame" x="16.436860068330134" y="453" width="342" height="20.999999999999943"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Tg-Sv-3vC">
+                                <rect key="frame" x="15.13481228676028" y="471" width="343.00000000000023" height="30.000000000000057"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HOME ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sn8-ib-Adb">
+                                <rect key="frame" x="15.13481228676028" y="499" width="343.00000000000023" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Home Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dUB-u0-RQW">
+                                <rect key="frame" x="15.13481228676028" y="517" width="343.00000000000023" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2j-Lx-v6s">
+                                <rect key="frame" x="16" y="555" width="342" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.46051210170000001" green="0.22893238069999999" blue="0.69145590069999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="REGISTER">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerBtn:" destination="IVg-i6-cE8" eventType="touchUpInside" id="XOC-mH-yZe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2d-vl-2c8">
+                                <rect key="frame" x="16" y="592" width="342" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <state key="normal" title="Already registered? Login">
+                                    <color key="titleColor" red="0.46051210170000001" green="0.22893238069999999" blue="0.69145590069999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="N6O-B3-0Nz" kind="show" identifier="registerToLogin" id="Mgm-S5-LLo"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Caregiver Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MPt-ln-8AV">
+                                <rect key="frame" x="16" y="379" width="342" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="FWv-By-sN5">
+                                <rect key="frame" x="95" y="64" width="185" height="185"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="pPJ-nk-smL"/>
+                    </view>
+                    <connections>
+                        <outlet property="caregiverNameField" destination="MPt-ln-8AV" id="igz-za-6uf"/>
+                        <outlet property="caregiverPhoneField" destination="s0O-th-7Sy" id="WAE-CN-ipy"/>
+                        <outlet property="homeField" destination="dUB-u0-RQW" id="CqZ-FG-rQ4"/>
+                        <outlet property="passwordField" destination="2Tg-Sv-3vC" id="cVM-WG-mOG"/>
+                        <outlet property="patientNameField" destination="YQS-GX-ax6" id="6Jf-FD-DB4"/>
+                        <outlet property="patientPhoneField" destination="2Mc-WX-dse" id="UCW-RC-oQX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9iD-65-ZB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2132" y="-566"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JO6-it-yBA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b16-yJ-uTe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VDg-gf-Z86">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="T4J-dP-Kem"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILd-4R-Rwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-15.199999999999999" y="-564.46776611694156"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="524" height="524"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Mgm-S5-LLo"/>
+    </inferredMetricsTieBreakers>
+</document>
