@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2421FAE32062F46000CB14C1 /* patientHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2421FAE22062F46000CB14C1 /* patientHomeViewController.swift */; };
 		24D949B22059846800A457AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D949B12059846800A457AB /* AppDelegate.swift */; };
 		24D949B42059846800A457AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D949B32059846800A457AB /* ViewController.swift */; };
 		24D949B72059846800A457AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D949B52059846800A457AB /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2421FAE22062F46000CB14C1 /* patientHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = patientHomeViewController.swift; sourceTree = "<group>"; };
 		24D949AE2059846800A457AB /* alzhaimers_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alzhaimers_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D949B12059846800A457AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24D949B32059846800A457AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		24D949A52059846800A457AB = {
 			isa = PBXGroup;
 			children = (
+				2421FAE22062F46000CB14C1 /* patientHomeViewController.swift */,
 				24D949B02059846800A457AB /* alzhaimers_app */,
 				24D949C52059846B00A457AB /* alzhaimers_appTests */,
 				24D949D02059846B00A457AB /* alzhaimers_appUITests */,
@@ -264,6 +267,7 @@
 			files = (
 				24D949B42059846800A457AB /* ViewController.swift in Sources */,
 				24D949E4205F028B00A457AB /* LoginPageViewController.swift in Sources */,
+				2421FAE32062F46000CB14C1 /* patientHomeViewController.swift in Sources */,
 				24D949B22059846800A457AB /* AppDelegate.swift in Sources */,
 				24D949E0205EF42C00A457AB /* RegisterPageViewController.swift in Sources */,
 			);

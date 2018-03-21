@@ -90,7 +90,7 @@ class RegisterPageViewController: UIViewController {
         
         let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
         
-        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:3000/users/")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "http://54.175.126.168:3000/users/")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "POST"

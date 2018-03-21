@@ -27,8 +27,35 @@ class LoginPageViewController: UIViewController {
     @IBAction func loginBtn(_ sender: Any) {
         let password = passwordField.text;
         let phone = phoneField.text;
+        
     }
     
+    //helper function to dispaly alert to user with corresponding message
+    func displayAlert(userMessage:String ){
+        let myAlert = UIAlertController(title:"ERROR", message:userMessage, preferredStyle: UIAlertControllerStyle.alert);
+        let okAction = UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil);
+        myAlert.addAction(okAction);
+        
+        self.present(myAlert, animated: true, completion: nil);
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "loginToPatient" {
+            let password = passwordField.text;
+            let phone = phoneField.text;
+            
+            
+            if((password?.isEmpty)! || (phone?.isEmpty)!){
+                displayAlert(userMessage: "Unable to login: All Fields Required");
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        // by default, transition
+        return true
+    }
     /*
     // MARK: - Navigation
 
