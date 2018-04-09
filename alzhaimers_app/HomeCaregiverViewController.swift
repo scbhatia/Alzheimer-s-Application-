@@ -1,16 +1,16 @@
 //
-//  PatientHomeViewController.swift
+//  HomeCaregiverViewController.swift
 //  alzhaimers_app
 //
-//  Created by Dana Szapiro on 3/26/18.
+//  Created by Dana Szapiro on 3/28/18.
 //  Copyright © 2018 Dana Szapiro. All rights reserved.
 //
 
 import UIKit
 
-class PatientHomeViewController: UIViewController {
+class HomeCaregiverViewController: UIViewController {
 
-    @IBOutlet weak var patientNameField: UILabel!
+    @IBOutlet weak var caregiverNameField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,22 +22,22 @@ class PatientHomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func homeButton(_ sender: Any) {
+    @IBAction func trackBtn(_ sender: Any) {
+    }
+    @IBAction func remindersBtn(_ sender: Any) {
+    }
+    @IBAction func memoriesBtn(_ sender: Any) {
+    }
+    @IBAction func copingBtn(_ sender: Any) {
+    }
+    @IBAction func cognitiveBtn(_ sender: Any) {
+    }
+    @IBAction func emergencyBtn(_ sender: Any) {
+    }
+    @IBAction func logoutBtn(_ sender: Any) {
     }
     
-    @IBAction func reminderButton(_ sender: Any) {
-    }
     
-    
-    @IBAction func memoriesButton(_ sender: Any) {
-    }
-    
-    @IBAction func gamesButton(_ sender: Any) {
-    }
-    @IBAction func emergencyButton(_ sender: Any) {
-    }
-    @IBAction func logoutButton(_ sender: Any) {
-    }
     /*
     // MARK: - Navigation
 

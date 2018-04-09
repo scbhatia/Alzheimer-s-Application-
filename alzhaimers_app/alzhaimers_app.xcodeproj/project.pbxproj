@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2421FAE32062F46000CB14C1 /* patientHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2421FAE22062F46000CB14C1 /* patientHomeViewController.swift */; };
+		241CF58520699CA5000A46B0 /* PatientHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241CF58420699CA5000A46B0 /* PatientHomeViewController.swift */; };
+		241CF589206C3AA6000A46B0 /* HomeCaregiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241CF588206C3AA6000A46B0 /* HomeCaregiverViewController.swift */; };
+		24699E76207BB85100131DDF /* SendReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24699E75207BB85100131DDF /* SendReminderViewController.swift */; };
 		24D949B22059846800A457AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D949B12059846800A457AB /* AppDelegate.swift */; };
 		24D949B42059846800A457AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D949B32059846800A457AB /* ViewController.swift */; };
 		24D949B72059846800A457AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D949B52059846800A457AB /* Main.storyboard */; };
@@ -37,7 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2421FAE22062F46000CB14C1 /* patientHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = patientHomeViewController.swift; sourceTree = "<group>"; };
+		241CF58420699CA5000A46B0 /* PatientHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PatientHomeViewController.swift; path = ../PatientHomeViewController.swift; sourceTree = "<group>"; };
+		241CF588206C3AA6000A46B0 /* HomeCaregiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCaregiverViewController.swift; path = ../HomeCaregiverViewController.swift; sourceTree = "<group>"; };
+		24699E75207BB85100131DDF /* SendReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReminderViewController.swift; sourceTree = "<group>"; };
 		24D949AE2059846800A457AB /* alzhaimers_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alzhaimers_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D949B12059846800A457AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24D949B32059846800A457AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +87,6 @@
 		24D949A52059846800A457AB = {
 			isa = PBXGroup;
 			children = (
-				2421FAE22062F46000CB14C1 /* patientHomeViewController.swift */,
 				24D949B02059846800A457AB /* alzhaimers_app */,
 				24D949C52059846B00A457AB /* alzhaimers_appTests */,
 				24D949D02059846B00A457AB /* alzhaimers_appUITests */,
@@ -104,6 +107,9 @@
 		24D949B02059846800A457AB /* alzhaimers_app */ = {
 			isa = PBXGroup;
 			children = (
+				24699E75207BB85100131DDF /* SendReminderViewController.swift */,
+				241CF588206C3AA6000A46B0 /* HomeCaregiverViewController.swift */,
+				241CF58420699CA5000A46B0 /* PatientHomeViewController.swift */,
 				24D949B12059846800A457AB /* AppDelegate.swift */,
 				24D949B32059846800A457AB /* ViewController.swift */,
 				24D949B52059846800A457AB /* Main.storyboard */,
@@ -267,9 +273,11 @@
 			files = (
 				24D949B42059846800A457AB /* ViewController.swift in Sources */,
 				24D949E4205F028B00A457AB /* LoginPageViewController.swift in Sources */,
-				2421FAE32062F46000CB14C1 /* patientHomeViewController.swift in Sources */,
 				24D949B22059846800A457AB /* AppDelegate.swift in Sources */,
+				24699E76207BB85100131DDF /* SendReminderViewController.swift in Sources */,
 				24D949E0205EF42C00A457AB /* RegisterPageViewController.swift in Sources */,
+				241CF589206C3AA6000A46B0 /* HomeCaregiverViewController.swift in Sources */,
+				241CF58520699CA5000A46B0 /* PatientHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
