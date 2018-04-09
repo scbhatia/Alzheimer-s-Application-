@@ -54,6 +54,7 @@ class LoginPageViewController: UIViewController {
                 return false
             }
             else {
+                patientLogin(patPhone: phone!, password: password!);
                 return true
             }
         }
@@ -67,9 +68,9 @@ class LoginPageViewController: UIViewController {
                 return false
             }
             else {
+               // caregiverLogin(carePhone: phone!, password: password!)
                 return true
             }
-            
         }
         // by default, transition
         return true
