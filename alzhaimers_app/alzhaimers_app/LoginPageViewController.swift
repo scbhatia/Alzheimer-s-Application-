@@ -41,7 +41,9 @@ class LoginPageViewController: UIViewController {
         self.present(myAlert, animated: true, completion: nil);
     }
     
-    
+    struct ValidUser {
+        static var validUser = Bool()
+    }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "loginToPatient" {
@@ -55,7 +57,13 @@ class LoginPageViewController: UIViewController {
             }
             else {
                 patientLogin(patPhone: phone!, password: password!);
-                return true
+                if(!ValidUser.validUser){
+                    displayAlert(userMessage: "Unable to login: Incorrect Patient Information");
+                    return false
+                }
+                else if (ValidUser.validUser){
+                    return true
+                }
             }
         }
         else if identifier == "loginToCaregiver" {
@@ -68,8 +76,14 @@ class LoginPageViewController: UIViewController {
                 return false
             }
             else {
-               // caregiverLogin(carePhone: phone!, password: password!)
-                return true
+               caregiverLogin(carePhone: phone!, password: password!)
+                if(!ValidUser.validUser){
+                    displayAlert(userMessage: "Unable to login: Incorrect Caregiver Information");
+                    return false
+                }
+                else if (ValidUser.validUser){
+                    return true
+                }
             }
         }
         // by default, transition
@@ -77,14 +91,14 @@ class LoginPageViewController: UIViewController {
     }
     
     //Post request - send user data to data base to perform registaration
-    func patientLogin(patPhone:String, password:String){
+    func patientLogin(patPhone:String, password:String) {
         let headers = [
             "Content-Type": "application/json",
             "Cache-Control": "no-cache",
             "Postman-Token": "c79cd303-8785-6c87-1598-2a5e916741f1"
         ]
         
-        let getUrl = "http://localhost:3000/users/pat" + patPhone + "&" + password
+        let getUrl = "http://54.175.126.168:3000/users/pat/" + patPhone + "&" + password
         
         let request = NSMutableURLRequest(url: NSURL(string: getUrl)! as URL, cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
@@ -93,25 +107,30 @@ class LoginPageViewController: UIViewController {
         
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            //print(data!)
             if (error != nil) {
                 print(error!)
             } else {
                 let httpResponse = response as? HTTPURLResponse
                 print(httpResponse as Any)
+                if (httpResponse?.statusCode == 200){
+                    ValidUser.validUser = true
+                }
+                if (httpResponse?.statusCode == 404){
+                    ValidUser.validUser = false
+                }
             }
         })
-        
         dataTask.resume()
     }
     
-    func caregiverLogin(carePhone:String, password:String){
+    func caregiverLogin(carePhone:String, password:String) {
         let headers = [
             "Content-Type": "application/json",
             "Cache-Control": "no-cache",
             "Postman-Token": "c79cd303-8785-6c87-1598-2a5e916741f1"
         ]
-        
-        let getUrl = "http://localhost:3000/users/care" + carePhone + "&" + password
+        let getUrl = "http://54.175.126.168:3000/users/care/" + carePhone + "&" + password
         
         let request = NSMutableURLRequest(url: NSURL(string: getUrl)! as URL, cachePolicy: .useProtocolCachePolicy,
                                               timeoutInterval: 10.0)
@@ -125,6 +144,12 @@ class LoginPageViewController: UIViewController {
             } else {
                 let httpResponse = response as? HTTPURLResponse
                 print(httpResponse as Any)
+                if (httpResponse?.statusCode == 200){
+                    ValidUser.validUser = true
+                }
+                if (httpResponse?.statusCode == 404){
+                    ValidUser.validUser = false
+                }
             }
         })
         

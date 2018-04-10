@@ -471,7 +471,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.46051210165023804" green="0.22893238067626953" blue="0.6914559006690979" alpha="0.27410637842465752" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.83834570649999995" green="0.74888175729999995" blue="0.91113513710000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="B90-CI-mpb"/>
                     </view>
                 </viewController>
@@ -755,41 +755,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ftd-y4-vlx">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ftd-y4-vlx">
                                 <rect key="frame" x="47" y="20" width="320" height="716"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE REMINDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rI8-VS-jOp">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="19"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminder Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J6e-H7-Cez">
-                                        <rect key="frame" x="0.0" y="27" width="320" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Reminder Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J6e-H7-Cez">
+                                        <rect key="frame" x="0.0" y="27" width="320" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="yVi-eU-DJb"/>
+                                            <constraint firstAttribute="height" constant="40" id="yVi-eU-DJb"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminder Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UpE-QW-scW">
-                                        <rect key="frame" x="0.0" y="65" width="320" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Reminder Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UpE-QW-scW">
+                                        <rect key="frame" x="0.0" y="77" width="320" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="OVC-U2-wdB"/>
+                                            <constraint firstAttribute="height" constant="100" id="OVC-U2-wdB"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oOk-fV-M0A">
-                                        <rect key="frame" x="0.0" y="103" width="320" height="128"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="Etu-T8-F7z"/>
-                                        </constraints>
-                                    </imageView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="htc-5m-5vV">
-                                        <rect key="frame" x="0.0" y="239" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="187" width="320" height="216"/>
                                         <color key="backgroundColor" red="0.99990516900000004" green="1" blue="0.99987047910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="216" id="tO6-hP-9nx"/>
@@ -799,14 +793,14 @@
                                         </date>
                                     </datePicker>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzC-Ql-pde">
-                                        <rect key="frame" x="0.0" y="463" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="413" width="320" height="216"/>
                                         <color key="backgroundColor" red="0.99990516900000004" green="1" blue="0.99987047910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="216" id="eI3-pE-8o1"/>
                                         </constraints>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wd-bL-Tj8">
-                                        <rect key="frame" x="0.0" y="687" width="320" height="29"/>
+                                    <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wd-bL-Tj8">
+                                        <rect key="frame" x="0.0" y="639" width="320" height="77"/>
                                         <color key="backgroundColor" red="0.46051210170000001" green="0.22893238069999999" blue="0.69145590069999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                         <state key="normal" title="DONE">
@@ -818,7 +812,6 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="oOk-fV-M0A" firstAttribute="top" secondItem="UpE-QW-scW" secondAttribute="bottom" constant="8" symbolic="YES" id="DNF-Dx-jhc"/>
                                     <constraint firstItem="J6e-H7-Cez" firstAttribute="top" secondItem="ftd-y4-vlx" secondAttribute="top" constant="27" id="pRW-rU-H9l"/>
                                 </constraints>
                             </stackView>
@@ -832,10 +825,8 @@
                         <viewLayoutGuide key="safeArea" id="gbC-DB-mZH"/>
                     </view>
                     <connections>
-                        <outlet property="ImageField" destination="oOk-fV-M0A" id="pAF-dV-F4f"/>
                         <outlet property="descriptionField" destination="UpE-QW-scW" id="4oB-QM-mt2"/>
                         <outlet property="frequencyField" destination="mzC-Ql-pde" id="pkF-mF-rtJ"/>
-                        <outlet property="imageField" destination="oOk-fV-M0A" id="CEN-fp-vOL"/>
                         <outlet property="timePick" destination="htc-5m-5vV" id="KFz-3t-8dX"/>
                         <outlet property="titleField" destination="J6e-H7-Cez" id="HOY-tU-U5V"/>
                     </connections>
@@ -885,7 +876,8 @@
         <image name="photo-album" width="85" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="6pq-lx-1qG"/>
         <segue reference="cMG-tp-PbL"/>
-        <segue reference="nH2-T2-QeI"/>
+        <segue reference="Mgm-S5-LLo"/>
     </inferredMetricsTieBreakers>
 </document>

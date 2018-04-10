@@ -12,7 +12,6 @@ class SendReminderViewController: UIViewController, UIPickerViewDelegate, UIPick
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
-    @IBOutlet weak var imageField: UIImageView!
     @IBOutlet weak var timePick: UIDatePicker!
     @IBOutlet weak var frequencyField: UIPickerView!
     var frequencyOptions: [String] = [String]()
