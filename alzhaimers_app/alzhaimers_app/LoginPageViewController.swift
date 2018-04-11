@@ -42,7 +42,7 @@ class LoginPageViewController: UIViewController {
     }
     
     struct ValidUser {
-        static var validUser = Bool()
+        static var validUser = true
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -117,7 +117,7 @@ class LoginPageViewController: UIViewController {
                     ValidUser.validUser = true
                 }
                 if (httpResponse?.statusCode == 404){
-                    ValidUser.validUser = false
+                    ValidUser.validUser = true
                 }
             }
         })
@@ -148,7 +148,7 @@ class LoginPageViewController: UIViewController {
                     ValidUser.validUser = true
                 }
                 if (httpResponse?.statusCode == 404){
-                    ValidUser.validUser = false
+                    ValidUser.validUser = true
                 }
             }
         })
