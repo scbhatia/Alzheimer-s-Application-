@@ -45,19 +45,23 @@ router.route("/users")
                 console.log(data.length);
                 db.save(function(err){
                     if (err) {
-                        response = {"error": true, "message": "Error adding data"};
-                        return res.send(response);
-                    }
+                       // response = {"error": true, "message": "Error adding data"};
+                       // return res.send(response);
+                       res.status(400).send("Uh oh, something went wrong");
+		    }
                     else {
-                        response = {"error": false, "message": "Data added"};
-                        return res.send(response);
-                    }
+                        //response = {"error": false, "message": "Data added"};
+                        //return res.send(response);
+                        res.status(200).send("Data Added");
+		    }
                 });
             }
             else {
-                response = {"error": true, "message": "User already exists!"};
-                return res.send(response);
-            }
+                //response = {"error": true, "message": "User already exists!"};
+                //return res.send(response);
+                res.status(300).send("User already exists");
+	    }
+
         })
 
     });
@@ -72,16 +76,18 @@ router.route("/users/pat/:phone&:password")
 
         mongoOp.find({pat_phone: pat_phone, password: password}, function(err, data) {
             if (err) {
-                response = {"error": true, "message": "Error fetching data"};
-
+                //response = {"error": true, "message": "Error fetching data"};
+                return res.status(400).send("Uh oh, something went wrong");
             }
             else if (!data.length) {
-                response = {"error": true, "message": "User does not exist"};
+                //response = {"error": true, "message": "User does not exist"};
+                return res.status(300).send("User does not exist");
             }
             else {
-                response = {"error": false, "message": "Patient login successful!"};
+                //response = {"error": false, "message": data};
+                return res.status(200).send("Login successful");
             }
-            return res.send(response);
+
 
         })
     });
@@ -95,16 +101,17 @@ router.route("/users/care/:phone&:password")
 
         mongoOp.find({care_phone: care_phone, password: password}, function(err, data) {
             if (err) {
-                response = {"error": true, "message": "Error fetching data"};
-
+                //response = {"error": true, "message": "Error fetching data"};
+                return res.status(400).send("Uh oh, something went wrong");
             }
             else if (!data.length) {
-                response = {"error": true, "message": "User does not exist"};
+                //response = {"error": true, "message": "User does not exist"};
+                return res.status(300).send("User does not exist");
             }
             else {
-                response = {"error": false, "message": "Caregiver login successful!"};
+                //response = {"error": false, "message": data};
+                return res.status(200).send("Login successful");
             }
-            return res.send(response);
 
         })
     });
