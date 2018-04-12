@@ -45,23 +45,17 @@ router.route("/users")
                 console.log(data.length);
                 db.save(function(err){
                     if (err) {
-                       // response = {"error": true, "message": "Error adding data"};
-                       // return res.send(response);
                        res.status(400).send("Uh oh, something went wrong");
-		    }
+		            }
                     else {
-                        //response = {"error": false, "message": "Data added"};
-                        //return res.send(response);
                         res.status(200).send("Data Added");
-		    }
+		            }
                 });
             }
-            else {
-                //response = {"error": true, "message": "User already exists!"};
-                //return res.send(response);
-                res.status(300).send("User already exists");
-	    }
 
+            else {
+                res.status(300).send("User already exists");
+	        }
         })
 
     });
@@ -76,15 +70,12 @@ router.route("/users/pat/:phone&:password")
 
         mongoOp.find({pat_phone: pat_phone, password: password}, function(err, data) {
             if (err) {
-                //response = {"error": true, "message": "Error fetching data"};
                 return res.status(400).send("Uh oh, something went wrong");
             }
             else if (!data.length) {
-                //response = {"error": true, "message": "User does not exist"};
                 return res.status(300).send("User does not exist");
             }
             else {
-                //response = {"error": false, "message": data};
                 return res.status(200).send("Login successful");
             }
 
@@ -92,6 +83,7 @@ router.route("/users/pat/:phone&:password")
         })
     });
 
+// For caregiver login
 router.route("/users/care/:phone&:password")
     // gets user with specific phone number and password combo
     .get(function(req, res) {
@@ -101,15 +93,12 @@ router.route("/users/care/:phone&:password")
 
         mongoOp.find({care_phone: care_phone, password: password}, function(err, data) {
             if (err) {
-                //response = {"error": true, "message": "Error fetching data"};
                 return res.status(400).send("Uh oh, something went wrong");
             }
             else if (!data.length) {
-                //response = {"error": true, "message": "User does not exist"};
                 return res.status(300).send("User does not exist");
             }
             else {
-                //response = {"error": false, "message": data};
                 return res.status(200).send("Login successful");
             }
 
@@ -121,6 +110,55 @@ router.route("/users/care/:phone&:password")
 
 /////////////////////////////// End Reminders System /////////////////////////////
 
+/////////////////////////////// Calling System ///////////////////////////////////
+router.route("/carephone/:phone")
+    // gets caregiver phone for patient to call
+    .get(function(req,res) {
+        let pat_phone = req.params.phone;
+        mongoOp.find({pat_phone: pat_phone}, {care_phone: 1}, function(err, data) {
+            if (err) {
+                return res.status(400).send("Uh oh, something went wrong");
+            }
+            else if (!data.length) {
+                return res.status(300).send("Cannot find caregiver phone number");
+            }
+            else {
+                return res.json(200, data);
+            }
+        })
+    });
+
+router.route("/patphone/:phone") 
+    // gets patient phone for caregiver to call 
+    .get(function(req,res) {
+        let care_phone = req.params.phone;
+        mongoOp.find({care_phone: care_phone}, {pat_phone: 1}, function(err, data) {
+            if (err) {
+                return res.status(400).send("Uh oh, something went wrong");
+            }
+            else if (!data.length) {
+                return res.status(300).send("Cannot find patient phone number");
+            }
+            else {
+                return res.json(200, data);
+            }
+        })
+    });
+///////////////////////////// End Calling System /////////////////////////////////
+
+////////////////////////////// Locations System //////////////////////////////////
+router.route("/pat_gps")
+    // updates patient location
+    .post()
+
+    // gets patients location
+
+router.route("/home_gps")
+    // gets home address
+    .get(function(req,res) {
+        
+    })
+/////////////////////////////// End Locations System /////////////////////////////
 app.use('/',router);
 
 app.listen(3000);
