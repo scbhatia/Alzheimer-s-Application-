@@ -62,6 +62,11 @@ class RegisterPageViewController: UIViewController {
         
     }
     
+    
+    @IBAction func alreadyRegisteredBtn(_ sender: Any) {
+        self.performSegue(withIdentifier: "alreadyRegistered", sender: (Any).self )
+    }
+    
     //helper function to dispaly alert to user with corresponding message
     func displayAlert(userMessage:String ){
         let myAlert = UIAlertController(title:"ERROR", message:userMessage, preferredStyle: UIAlertControllerStyle.alert);

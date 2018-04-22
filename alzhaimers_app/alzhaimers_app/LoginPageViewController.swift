@@ -12,24 +12,122 @@ class LoginPageViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Login"
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func registerBtn(_ sender: Any) {
+        self.performSegue(withIdentifier: "loginToRegister", sender: (Any).self )
     }
     
     @IBAction func loginBtn(_ sender: Any) {
-    // let password = passwordField.text;
-    // let phone = phoneField.text;
+     let password = passwordField.text;
+     let patPhone = phoneField.text;
+        if((password?.isEmpty)! || (patPhone?.isEmpty)!){
+            displayAlert(userMessage: "Unable to login: All Fields Required");
+        }
+        else {
+            let headers = [
+                "Content-Type": "application/json",
+                "Cache-Control": "no-cache",
+                "Postman-Token": "c79cd303-8785-6c87-1598-2a5e916741f1"
+            ]
+            
+            let getUrl = "http://54.175.126.168:3000/users/pat/" + patPhone! + "&" + password!
+            
+            let request = NSMutableURLRequest(url: NSURL(string: getUrl)! as URL, cachePolicy: .useProtocolCachePolicy,
+                                              timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                //print(data!)
+                if (error != nil) {
+                    print(error!)
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    print(httpResponse as Any)
+                    if (httpResponse?.statusCode == 200){
+                        UserDefaults.standard.set(patPhone, forKey: "Phone");
+                        UserDefaults.standard.set(password, forKey: "password");
+                        DispatchQueue.main.async { [weak self] in
+                            self?.performSegue(withIdentifier: "loginToPatient", sender: (Any).self )
+                        }
+                    }
+                    else if (httpResponse?.statusCode == 300){
+                        DispatchQueue.main.async{
+                            self.displayAlert(userMessage: "Invalid User Info. Please try again");
+                        }
+                    }
+                    else if (httpResponse?.statusCode == 400){
+                        DispatchQueue.main.async {
+                            self.displayAlert(userMessage: "There was an error. Please try again");
+                        }
+                    }
+                }
+            })
+            dataTask.resume()
+        }
         
     }
+    
     @IBAction func caregiverLoginBtn(_ sender: Any) {
+        let password = passwordField.text;
+        let phone = phoneField.text;
+        
+        if((password?.isEmpty)! || (phone?.isEmpty)!){
+            displayAlert(userMessage: "Unable to login: All Fields Required");
+        }
+        else {
+            let headers = [
+                "Content-Type": "application/json",
+                "Cache-Control": "no-cache",
+                "Postman-Token": "c79cd303-8785-6c87-1598-2a5e916741f1"
+            ]
+            let getUrl = "http://54.175.126.168:3000/users/care/" + phone! + "&" + password!
+            
+            let request = NSMutableURLRequest(url: NSURL(string: getUrl)! as URL, cachePolicy: .useProtocolCachePolicy,
+                                              timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                //print(data!)
+                if (error != nil) {
+                    print(error!)
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    print(httpResponse as Any)
+                    if (httpResponse?.statusCode == 200){
+                        UserDefaults.standard.set(phone, forKey: "Phone");
+                        UserDefaults.standard.set(password, forKey: "password");
+                        DispatchQueue.main.async { [weak self] in
+                            self?.performSegue(withIdentifier: "loginToCaregiver", sender: (Any).self )
+                        }
+                    }
+                    else if (httpResponse?.statusCode == 300){
+                        DispatchQueue.main.async{
+                            self.displayAlert(userMessage: "Invalid User Info. Please try again");
+                        }
+                    }
+                    else if (httpResponse?.statusCode == 400){
+                        DispatchQueue.main.async {
+                            self.displayAlert(userMessage: "There was an error. Please try again");
+                        }
+                    }
+                }
+            })
+            dataTask.resume()
+        }
+
     }
     
     //helper function to dispaly alert to user with corresponding message
@@ -39,130 +137,6 @@ class LoginPageViewController: UIViewController {
         myAlert.addAction(okAction);
         
         self.present(myAlert, animated: true, completion: nil);
-    }
-    
-    struct ValidUser {
-        static var validUser = true
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "loginToPatient" {
-            let password = passwordField.text;
-            let phone = phoneField.text;
-            
-            
-            if((password?.isEmpty)! || (phone?.isEmpty)!){
-                displayAlert(userMessage: "Unable to login: All Fields Required");
-                return false
-            }
-            else {
-                patientLogin(patPhone: phone!, password: password!);
-                if(!ValidUser.validUser){
-                    displayAlert(userMessage: "Unable to login: Incorrect Patient Information");
-                    return false
-                }
-                else if (ValidUser.validUser){
-                    return true
-                }
-            }
-        }
-        else if identifier == "loginToCaregiver" {
-            let password = passwordField.text;
-            let phone = phoneField.text;
-            
-            
-            if((password?.isEmpty)! || (phone?.isEmpty)!){
-                displayAlert(userMessage: "Unable to login: All Fields Required");
-                return false
-            }
-            else {
-               caregiverLogin(carePhone: phone!, password: password!)
-                if(!ValidUser.validUser){
-                    displayAlert(userMessage: "Unable to login: Incorrect Caregiver Information");
-                    return false
-                }
-                else if (ValidUser.validUser){
-                    return true
-                }
-            }
-        }
-        // by default, transition
-        return true
-    }
-    
-    //Post request - send user data to data base to perform registaration
-    func patientLogin(patPhone:String, password:String) {
-        let headers = [
-            "Content-Type": "application/json",
-            "Cache-Control": "no-cache",
-            "Postman-Token": "c79cd303-8785-6c87-1598-2a5e916741f1"
-        ]
-        
-        let getUrl = "http://54.175.126.168:3000/users/pat/" + patPhone + "&" + password
-        
-        let request = NSMutableURLRequest(url: NSURL(string: getUrl)! as URL, cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            //print(data!)
-            if (error != nil) {
-                print(error!)
-            } else {
-                let httpResponse = response as? HTTPURLResponse
-                print(httpResponse as Any)
-                if (httpResponse?.statusCode == 200){
-                    ValidUser.validUser = true
-                }
-                if (httpResponse?.statusCode == 404){
-                    ValidUser.validUser = true
-                }
-            }
-        })
-        dataTask.resume()
-    }
-    
-    func caregiverLogin(carePhone:String, password:String) {
-        let headers = [
-            "Content-Type": "application/json",
-            "Cache-Control": "no-cache",
-            "Postman-Token": "c79cd303-8785-6c87-1598-2a5e916741f1"
-        ]
-        let getUrl = "http://54.175.126.168:3000/users/care/" + carePhone + "&" + password
-        
-        let request = NSMutableURLRequest(url: NSURL(string: getUrl)! as URL, cachePolicy: .useProtocolCachePolicy,
-                                              timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error!)
-            } else {
-                let httpResponse = response as? HTTPURLResponse
-                print(httpResponse as Any)
-                if (httpResponse?.statusCode == 200){
-                    ValidUser.validUser = true
-                }
-                if (httpResponse?.statusCode == 404){
-                    ValidUser.validUser = true
-                }
-            }
-        })
-        
-        dataTask.resume()
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    }    
 
 }

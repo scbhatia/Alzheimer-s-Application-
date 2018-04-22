@@ -42,7 +42,7 @@
 /* Begin PBXFileReference section */
 		241CF58420699CA5000A46B0 /* PatientHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PatientHomeViewController.swift; path = ../PatientHomeViewController.swift; sourceTree = "<group>"; };
 		241CF588206C3AA6000A46B0 /* HomeCaregiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCaregiverViewController.swift; path = ../HomeCaregiverViewController.swift; sourceTree = "<group>"; };
-		243D4B33207E740C00A18613 /* SendMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SendMemoryViewController.swift; path = alzhaimers_app/SendMemoryViewController.swift; sourceTree = "<group>"; };
+		243D4B33207E740C00A18613 /* SendMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMemoryViewController.swift; sourceTree = "<group>"; };
 		24699E75207BB85100131DDF /* SendReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReminderViewController.swift; sourceTree = "<group>"; };
 		24D949AE2059846800A457AB /* alzhaimers_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alzhaimers_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D949B12059846800A457AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +89,6 @@
 		24D949A52059846800A457AB = {
 			isa = PBXGroup;
 			children = (
-				243D4B33207E740C00A18613 /* SendMemoryViewController.swift */,
 				24D949B02059846800A457AB /* alzhaimers_app */,
 				24D949C52059846B00A457AB /* alzhaimers_appTests */,
 				24D949D02059846B00A457AB /* alzhaimers_appUITests */,
@@ -110,6 +109,7 @@
 		24D949B02059846800A457AB /* alzhaimers_app */ = {
 			isa = PBXGroup;
 			children = (
+				243D4B33207E740C00A18613 /* SendMemoryViewController.swift */,
 				24699E75207BB85100131DDF /* SendReminderViewController.swift */,
 				241CF588206C3AA6000A46B0 /* HomeCaregiverViewController.swift */,
 				241CF58420699CA5000A46B0 /* PatientHomeViewController.swift */,
