@@ -9,7 +9,11 @@ var userSchema  = {
     "care_phone" : String,
     "care_name" : String,
     "password" : String,
-    "address" : String
+    "address" : String,
+    "pat_addr_lat" : String,
+    "pat_addr_lon" : String,
+    "m_reminders" : [String],
+    "reminders": [String]
 };
 
 module.exports = mongoose.model('userLogin',userSchema);

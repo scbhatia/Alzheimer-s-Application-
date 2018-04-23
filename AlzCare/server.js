@@ -7,7 +7,7 @@ var router      =   express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
 
-///////////////////////// User Management System ////////////////////////////////
+///////////////////////// User Management System (DONE) ////////////////////////////////
 router.route("/users")
     // gets all users 
     .get(function(req,res) {
@@ -32,7 +32,7 @@ router.route("/users")
         db.pat_phone = req.body.pat_phone;
         db.care_phone = req.body.care_phone;
         db.password = req.body.password;
-        db,pat_name = req.body.pat_name;
+        db.pat_name = req.body.pat_name;
         db.care_name = req.body.care_name;
         db.address = req.body.address;
 
@@ -107,10 +107,16 @@ router.route("/users/care/:phone&:password")
 ///////////////////////// End User Management System /////////////////////////////
 
 ////////////////////////////// Reminders System //////////////////////////////////
+router.route("/m_reminders")
+    .post(function(req,res) {
+        var db = new mongoOp();
+        var response = {};
 
+        
+    })
 /////////////////////////////// End Reminders System /////////////////////////////
 
-/////////////////////////////// Calling System ///////////////////////////////////
+/////////////////////////////// Calling System (DONE) ///////////////////////////////////
 router.route("/carephone/:phone")
     // gets caregiver phone for patient to call
     .get(function(req,res) {
@@ -146,19 +152,104 @@ router.route("/patphone/:phone")
     });
 ///////////////////////////// End Calling System /////////////////////////////////
 
-////////////////////////////// Locations System //////////////////////////////////
+////////////////////////////// Locations System (DONE) //////////////////////////////////
 router.route("/pat_gps")
+
     // updates patient location
-    .post()
+    .post(function(req,res) {
+        var db = new mongoOp();
+        var response = {};
 
+        db.pat_phone = req.body.pat_phone;
+        db.password = req.body.password;
+        db.pat_addr_lat = req.body.pat_addr_lat;
+        db.pat_addr_lon = req.body.pat_addr_lon;
+
+        mongoOp.update({pat_phone: db.pat_phone, password: db.password}, {pat_phone: db.pat_phone, password: db.password, pat_addr_lat: db.pat_addr_lat, pat_addr_lon: db.pat_addr_lon}, function(err, data) {
+            if (err) {
+                res.status(400).send({"message": "Unable to update location"});
+            }
+            else {
+                res.status(200).send("Data added");
+            }
+        })
+    });
+
+router.route("/pat_gps/:phone")
     // gets patients location
+    .get(function(req,res) {
+        let care_phone = req.params.phone;
+        mongoOp.find({care_phone: care_phone}, {pat_addr_lat: 1, pat_addr_lon: 1}, function(err, data) {
+            if (err) {
+                return res.status(400).send({"message": "Uh oh, something went wrong"});
+            }
+            else if (!data.length) {
+                return res.json(300,{"message": "Cannot find caregiver phone number"});
+            }
+            else {
+                return res.json(200, {"message": data});
+            }
+        })
+    });
 
-router.route("/home_gps")
+router.route("/home_gps/:phone")
     // gets home address
     .get(function(req,res) {
-        
-    })
+        let pat_phone = req.params.phone;
+        mongoOp.find({pat_phone: pat_phone}, {address: 1}, function(err, data) {
+            if (err) {
+                return res.status(400).send({"message": "Uh oh, something went wrong"});
+            }
+            else if (!data.length) {
+                return res.json(300,{"message": "Cannot find patient phone number"});
+            }
+            else {
+                return res.json(200, {"message": data});
+            }
+        })
+    });
+
 /////////////////////////////// End Locations System /////////////////////////////
+/////////////////////////////// Gets info (DONE)/////////////////////////////
+router.route("/pat/:phone")
+    // gets all patient info
+    .get(function(req,res) {
+        let pat_phone = req.params.phone;
+
+        var response = {};
+        mongoOp.find({pat_phone: pat_phone}, {pat_phone: 1, pat_name: 1, care_phone: 1, address: 1}, function(err, data) {
+            if (err) {
+                response = {"error" : true, "message" : "Error fetching data"};
+            }
+            else {
+                response = {data};
+            }
+
+            return res.send(response);
+        })
+    });
+
+router.route("/care/:phone")
+    // gets all caregiver info
+    .get(function(req,res) {
+        let care_phone = req.params.phone;
+
+        var response = {};
+        mongoOp.find({care_phone: care_phone}, {care_phone: 1, care_name: 1, pat_phone: 1}, function(err, data) {
+            if (err) {
+                response = {"error" : true, "message" : "Error fetching data"};
+            }
+            else {
+                response = {data};
+            }
+
+            return res.send(response);
+        })
+    });
+/////////////////////////////// End Gets info /////////////////////////////
+
+
+
 app.use('/',router);
 
 app.listen(3000);
