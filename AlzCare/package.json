@@ -16,6 +16,9 @@
   "dependencies": {
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
-    "mongoose": "^4.1.2"
+    "moment": "^2.22.1",
+    "moment-timezone": "^0.5.16",
+    "mongoose": "^4.1.2",
+    "npm": "^5.8.0"
   }
 }

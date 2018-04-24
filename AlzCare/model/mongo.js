@@ -12,8 +12,6 @@ var userSchema  = {
     "address" : String,
     "pat_addr_lat" : String,
     "pat_addr_lon" : String,
-    "m_reminders" : [String],
-    "reminders": [String]
 };
 
 module.exports = mongoose.model('userLogin',userSchema);

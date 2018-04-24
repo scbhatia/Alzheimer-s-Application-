@@ -1,8 +1,12 @@
-var express     =   require("express");
-var app         =   express();
-var bodyParser  =   require("body-parser");
-var mongoOp     =   require("./model/mongo");
-var router      =   express.Router();
+var express         =   require("express");
+var app             =   express();
+var bodyParser      =   require("body-parser");
+var mongoOp         =   require("./model/mongo");
+var mems            =   require("./model/memories");
+var rems            =   require("./model/reminders");
+var momentTimeZone  =   require('moment-timezone');
+var moment          =   require('moment');
+var router          =   express.Router();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
@@ -107,13 +111,82 @@ router.route("/users/care/:phone&:password")
 ///////////////////////// End User Management System /////////////////////////////
 
 ////////////////////////////// Reminders System //////////////////////////////////
-router.route("/m_reminders")
+router.route("/reminders")
+    // posts to medication reminders table
     .post(function(req,res) {
-        var db = new mongoOp();
-        var response = {};
 
+        const pat_phone = req.body.phone; 
+        const pic_path = req.body.picture;
+        const med_name = req.body.med_name;
+        const timeZone = req.body.timeZone;
+        const time = moment(req.body.time, 'MM-DD-YYYY hh:mm');
+        
+        const rem = new rems({pat_phone: pat_phone, pic_path: pic_path, med_name: med_name, timeZone: timeZone, time: time});
+        rem.save(function(err){
+            if (err) {
+                throw err;
+               res.status(400).send({"message": "Uh oh, something went wrong"});
+            }
+            else {
+                res.status(200).send({"message": "Data Added"});
+            }
+        });
         
     })
+
+router.route("/reminders/:phone")
+    .get(function(req,res) {
+        let pat_phone = req.params.phone;
+        rems.find({pat_phone: pat_phone}, function(err, data) {
+            if (err) {
+                return res.status(400).send({"message": "Uh oh, something went wrong"});
+            }
+            else if (!data.length) {
+                return res.status(300).send({"message": "Cannot find patient phone number"});
+            }
+            else {
+                return res.json(200, data);
+            }
+        })
+    });
+
+router.route("/memories")
+    // posts to memories reminders table
+    .post(function(req,res) {
+
+        const pat_phone = req.body.phone; 
+        const pic_path = req.body.picture;
+        const message = req.body.message;
+        const timeZone = req.body.timeZone;
+        const time = moment(req.body.time, 'MM-DD-YYYY hh:mma');
+        
+        const mem = new mems({pat_phone: pat_phone, pic_path: pic_path, message: message, timeZone: timeZone, time: time});
+        rem.save(function(err){
+            if (err) {
+               res.status(400).send({"message": "Uh oh, something went wrong"});
+            }
+            else {
+                res.status(200).send({"message": "Data Added"});
+            }
+        });
+        
+    })
+
+router.route("/memories/:phone")
+    .get(function(req,res) {
+        let pat_phone = req.params.phone;
+        mems.find({pat_phone: pat_phone}, function(err, data) {
+            if (err) {
+                return res.status(400).send({"message": "Uh oh, something went wrong"});
+            }
+            else if (!data.length) {
+                return res.status(300).send({"message": "Cannot find patient phone number"});
+            }
+            else {
+                return res.json(200, data);
+            }
+        })
+    });
 /////////////////////////////// End Reminders System /////////////////////////////
 
 /////////////////////////////// Calling System (DONE) ///////////////////////////////////
