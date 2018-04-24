@@ -739,6 +739,7 @@
                                 </state>
                                 <connections>
                                     <action selector="doneBtn:" destination="Ccs-vX-Npu" eventType="touchUpInside" id="DKj-Ug-p1i"/>
+                                    <segue destination="1bn-XZ-GKl" kind="show" id="nEF-5q-rt9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gla-Br-IvS">
@@ -763,7 +764,6 @@
                         <outlet property="destAddress" destination="BTh-Na-nqX" id="Hvh-bp-1Xl"/>
                         <outlet property="directionsLabel" destination="gla-Br-IvS" id="GgD-1c-t30"/>
                         <outlet property="mapView" destination="IcI-u2-rTL" id="XiR-UN-z3o"/>
-                        <segue destination="1bn-XZ-GKl" kind="show" identifier="doneNavegateHome" id="IXj-cC-Uwx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wak-uH-hf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1036,7 +1036,7 @@
         <image name="photo-album" width="85" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IXj-cC-Uwx"/>
+        <segue reference="nEF-5q-rt9"/>
         <segue reference="ceQ-rp-5ZF"/>
         <segue reference="iZH-sY-59L"/>
     </inferredMetricsTieBreakers>

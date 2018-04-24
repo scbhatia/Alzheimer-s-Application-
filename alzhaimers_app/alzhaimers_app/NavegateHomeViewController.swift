@@ -12,7 +12,7 @@ import CoreLocation
 import AVFoundation
 import Foundation
 
-class NavegateHomeViewController:UIViewController, CLLocationManagerDelegate {
+class NavegateHomeViewController:UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var destAddress: UILabel!
@@ -40,8 +40,9 @@ class NavegateHomeViewController:UIViewController, CLLocationManagerDelegate {
         let userDefaults = UserDefaults.standard;
         let home = userDefaults.object(forKey: "homeAddress") as! String;
         destAddress.text = "Home Address: " + home;
-        //self.dest_address = home
+        dest_address = home
         headtoHome()
+        mapView.delegate = self
     }
     
     func headtoHome() {
@@ -63,12 +64,13 @@ class NavegateHomeViewController:UIViewController, CLLocationManagerDelegate {
             let destCoordinate = MKMapItem(placemark: mkPlacemark)
             self.getDirections(to: destCoordinate) // get directions to home address
         }
+        print(dest_address)
         
     }
     
     func getDirections(to destination: MKMapItem) {
         //currentCoordinate = CLLocationCoordinate2DMake(homeLat, homeLong)
-        print(currentCoordinate)
+        //print(currentCoordinate)
         let sourcePlacemark = MKPlacemark(coordinate: currentCoordinate) // start point ( current coordinate )
         let sourceMapItem = MKMapItem(placemark: sourcePlacemark) // turn placemark into mapitem
         
@@ -86,8 +88,9 @@ class NavegateHomeViewController:UIViewController, CLLocationManagerDelegate {
             
             let overlays = self.mapView.overlays
             self.mapView.removeOverlays(overlays)
-            
-            self.mapView.add(primaryRoute.polyline) // add the polyine( directions ) to the map
+            let polyline = primaryRoute.polyline
+            print("adding polyline")
+            self.mapView.add(polyline) // add the polyine( directions ) to the map
             //loop through and remove each region so we can search again, does not double up
             self.locationManager.monitoredRegions.forEach({ self.locationManager.stopMonitoring(for: $0) })
             
@@ -120,7 +123,7 @@ class NavegateHomeViewController:UIViewController, CLLocationManagerDelegate {
         guard let currentLocation = locations.first else { return } // gets the users location
         currentCoordinate = currentLocation.coordinate // sets the current location
         print(currentCoordinate)
-        mapView.showsUserLocation = true
+        //mapView.showsUserLocation = true
         mapView.userTrackingMode = .followWithHeading // zoom into user location and point map in direction your looking
     }
     
@@ -145,13 +148,16 @@ class NavegateHomeViewController:UIViewController, CLLocationManagerDelegate {
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        print("mapview render")
         if overlay is MKPolyline { // if polyine
+            print("mkpolyline")
             let renderer = MKPolylineRenderer(overlay: overlay) // set renderer to polyline
             renderer.strokeColor = .blue // set color of line to blue
             renderer.lineWidth = 10 // set width
             return renderer // return renderer
         }
         if overlay is MKCircle { // if at the geolocation
+            print("mkpolycircle")
             let renderer = MKCircleRenderer(overlay: overlay) // create renderer
             renderer.strokeColor = .blue
             renderer.fillColor = .blue
