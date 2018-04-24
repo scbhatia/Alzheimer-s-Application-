@@ -113,6 +113,7 @@ class RegisterPageViewController: UIViewController {
         })
         
         dataTask.resume()
+        self.performSegue(withIdentifier: "alreadyRegistered", sender: (Any).self )
         
     }
     

@@ -45,6 +45,31 @@
 	<string>This app requests to access your photo library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app requests to acces your camara</string>
+	<key>NSHomeKitUsageDescription</key>
+	<string></string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    
+    <string>Privacy - Location Always and When In Use Usage Description</string>
+    
+    <key>NSLocationAlwaysUsageDescription</key>
+    
+    <string>Privacy - Location Always Usage Description</string>
+    
+    <key>NSLocationWhenInUseUsageDescription</key>
+    
+    <string>Privacy - Location When In Use Usage Description</string>
+    
+    <key>UIBackgroundModes</key>
+    
+    <array>
+        
+        <string>audio</string>
+        
+        <string>location</string>
+        
+    </array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

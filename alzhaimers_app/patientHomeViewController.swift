@@ -14,19 +14,14 @@ class PatientHomeViewController: UIViewController {
     @IBOutlet weak var patientNameField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let userDefaults = UserDefaults.standard;
-        //let carePhoneVal = userDefaults.object(forKey: "Phone") as! String;
-        //patientNameField.text = carePhoneVal;
-        loadInfo()
-        //userDefaults.set("6177757350",forKey: "caregiverNumber")
+        let userDefaults = UserDefaults.standard;
+        let phone = userDefaults.object(forKey: "Phone") as! String;
+        loadInfo(phoneNumber: phone)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func homeButton(_ sender: Any) {
     }
     
     @IBAction func reminderButton(_ sender: Any) {
@@ -57,14 +52,14 @@ class PatientHomeViewController: UIViewController {
         self.performSegue(withIdentifier: "patientLogout", sender: (Any).self )
     }
     
-    func loadInfo(){
+    func loadInfo(phoneNumber : String){
         let headers = [
             "Content-Type": "application/json",
             "Cache-Control": "no-cache",
             "Postman-Token": "7af25023-25b3-4989-1cf1-99d8a2e2b293"
         ]
-        
-        let request = NSMutableURLRequest(url: NSURL(string: "http://54.175.126.168:3000/pat/67890")! as URL,
+        let urlString = "http://54.175.126.168:3000/pat/" + phoneNumber
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -82,6 +77,7 @@ class PatientHomeViewController: UIViewController {
                     if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                         let JSON = json as? [String: Any]{
                         print(JSON)
+                        print(json)
                         if let nestedArray = JSON["message"] as? NSArray {
                             
                             print("nested \(nestedArray)")
@@ -101,6 +97,7 @@ class PatientHomeViewController: UIViewController {
                                 userDefaults.set(name,forKey: "patientName")
                                 userDefaults.set(phone,forKey: "patientNumber")
                                 userDefaults.set(carePhone,forKey: "caregiverNumber")
+                                userDefaults.set(homeAddress,forKey: "homeAddress")
                                 self?.patientNameField.text = name as String;
                             }
   

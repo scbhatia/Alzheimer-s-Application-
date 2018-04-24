@@ -22,7 +22,9 @@ class HomeCaregiverViewController: UIViewController {
     @IBOutlet weak var caregiverNameField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadInfo();
+        let userDefaults = UserDefaults.standard;
+        let phone = userDefaults.object(forKey: "Phone") as! String;
+        loadInfo(phoneNumber: phone)
         //userDefaults.set("6177757350",forKey: "patientNumber")
     }
 
@@ -59,14 +61,14 @@ class HomeCaregiverViewController: UIViewController {
         self.performSegue(withIdentifier: "caregiverLogout", sender: Any?.self)
     }
     
-    func loadInfo(){
+    func loadInfo(phoneNumber: String){
         let headers = [
             "Content-Type": "application/json",
             "Cache-Control": "no-cache",
             "Postman-Token": "f0611d0a-d405-b432-83eb-1619c0f5475e"
         ]
-        
-        let request = NSMutableURLRequest(url: NSURL(string: "http://54.175.126.168:3000/care/67890")! as URL,
+        let urlString = "http://54.175.126.168:3000/care/" + phoneNumber
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -107,11 +109,6 @@ class HomeCaregiverViewController: UIViewController {
                             
                         }
                     }
-                  /* let userInfoData = try JSONDecoder().decode(UserInfo.self, from: data)
-                    DispatchQueue.main.async {
-                        print(userInfoData)
-                        self.userInfo = userInfoData
-                    }*/
                 } catch let jsonError {
                     print(jsonError)
             }
