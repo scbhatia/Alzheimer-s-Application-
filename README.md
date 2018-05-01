@@ -1,11 +1,11 @@
 # Alzheimers-Application
 
-==Description==
+## Description
 - Connects Alzheimer’s patients with their caregivers
 - Provides patients with daily reminders and memories
 - Allows caregivers to monitor patient location
 
-==User Stories==
+## User Stories
 1. As a patient...
   I want to be able to receive reminders for when to take my medication or do my important daily tasks
   I want to be able to store important locations and get directions of how to get there
@@ -23,7 +23,7 @@
   I want to be able to track the location of my patient
   I want to be able to send scheduled reminders and memories
 
-==Technologies Used==
+## Technologies Used
   - MongoDB:  database
   - Twilio: messages for memories and reminders
   - AWS EC2: server
