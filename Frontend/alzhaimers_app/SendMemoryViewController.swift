@@ -8,16 +8,19 @@
 
 import UIKit
 import MobileCoreServices
+import Foundation
 
 class SendMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    
+    @IBOutlet weak var titleField: UITextField!
+    @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     var newPic: Bool?
+    
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,8 +28,65 @@ class SendMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Dispose of any resources that can be recreated.
     }
 
+    
     @IBAction func doneButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "doneSendMemory", sender: Any?.self)
+        print("done")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-YYYY hh:mm"
+        let strDate = dateFormatter.string(from: datePicker.date)
+        print(strDate)
+        let title = titleField.text;
+        let description = descriptionField.text
+        let userDefaults = UserDefaults.standard;
+        let patPhone = userDefaults.object(forKey: "patientNumber") as! String;
+        sendMemory(phone: patPhone, picture: "photoImageView.image!", date: strDate, title: title!, description: description!)
+    }
+    
+    //send memory info to database
+    func sendMemory(phone: String, picture: String, date: String, title:String, description:String){
+        print("post request")
+        let headers = [
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
+            //"Postman-Token": "13e78322-2e34-3369-9a8c-30f006c53454"
+            "Postman-Token":"17873c6d-360e-7b01-2f95-413491c34c92"
+        ]
+        let parameters = [
+            "phone": phone,
+            "picture": picture,
+            "message": description,
+            "title":title,
+            "timeZone": "EST",
+            "time": date
+            ] as [String : Any]
+
+        
+        let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "http://54.175.126.168:3000/memories")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData as Data
+        print("sending memories------")
+        print(postData)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse as Any)
+                DispatchQueue.main.async {
+                    print("sending memories before segue------")
+                    print(postData)
+                    self.performSegue(withIdentifier: "sendMemory", sender: Any?.self)
+                }
+            }
+        })
+        
+        dataTask.resume()
     }
 
     //MARK: Actions
@@ -83,14 +143,5 @@ class SendMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePi
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

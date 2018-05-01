@@ -8,53 +8,25 @@
 
 import UIKit
 import MobileCoreServices
+import Foundation
 
-class SendReminderViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SendReminderViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var timePick: UIDatePicker!
-    @IBOutlet weak var frequencyField: UIPickerView!
     @IBOutlet weak var photoImageView: UIImageView!
-    
-    
-    
+  
     var newPic: Bool?
-    
-    var frequencyOptions: [String] = [String]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.frequencyField.delegate = self
-        self.frequencyField.dataSource = self
-        frequencyOptions = ["Select Frequency", "Once", "Weekly", "Daily", "Monthly"]
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    // The number of columns of data
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // The number of rows of data
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return frequencyOptions.count
-    }
-    
-    // The data to return for the row and component (column) that's being passed in
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return frequencyOptions[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
     }
     
     @IBAction func addImage(_ sender: Any) {
@@ -89,14 +61,14 @@ class SendReminderViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info [UIImagePickerControllerMediaType] as! NSString
-        if mediaType.isEqual(to: kUTTypeImage as String) {
+     //   if mediaType.isEqual(to: kUTTypeImage as String) {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-            photoImageView.image = image
+            self.photoImageView.image = image
             
             if newPic == true {
                 UIImageWriteToSavedPhotosAlbum(image,self, #selector(imageError), nil )
             }
-        }
+       // }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -110,7 +82,60 @@ class SendReminderViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
 
     @IBAction func doneBtn(_ sender: Any) {
-        self.performSegue(withIdentifier: "doneSendReminder", sender: Any?.self)
+        let userDefaults = UserDefaults.standard;
+        let patPhone = userDefaults.object(forKey: "patientNumber") as! String;
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-YYYY hh:mm"
+        let strDate = dateFormatter.string(from: timePick.date)
+        let title = titleField.text as! String;
+        let description = descriptionField.text as! String;
+        sendReminder(phone: patPhone, date: strDate, title: title, description: description, image: "photoImageView.image!")
+        print("done")
+    }
+    
+    func sendReminder(phone:String, date:String, title : String, description:String, image: String){
+        let headers = [
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
+            "Postman-Token": "17873c6d-360e-7b01-2f95-413491c34c92"
+        ]
+        let parameters = [
+            "phone": phone,
+            "picture": image,
+            "title": title,
+            "description":
+            description,
+            "timeZone": "EST",
+            "time": date
+            ] as [String : Any]
+
+        print("parameters")
+        print(parameters)
+        let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "http://54.175.126.168:3000/reminders")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData as Data
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                print("reminder sent response")
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse as Any)
+                DispatchQueue.main.async { [weak self] in
+                    self?.performSegue(withIdentifier: "doneSendReminder", sender: Any?.self)
+                }
+            }
+        })
+        
+        dataTask.resume()
+        
     }
     
 }

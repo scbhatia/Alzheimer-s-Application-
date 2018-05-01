@@ -15,6 +15,7 @@ class LoginPageViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true 
         self.title = "Login"
     }
 
@@ -32,6 +33,7 @@ class LoginPageViewController: UIViewController {
         if((password?.isEmpty)! || (patPhone?.isEmpty)!){
             displayAlert(userMessage: "Unable to login: All Fields Required");
         }
+            
         else {
             let headers = [
                 "Content-Type": "application/json",
@@ -55,9 +57,12 @@ class LoginPageViewController: UIViewController {
                     let httpResponse = response as? HTTPURLResponse
                     print(httpResponse as Any)
                     if (httpResponse?.statusCode == 200){
-                        UserDefaults.standard.set(patPhone, forKey: "Phone");
-                        UserDefaults.standard.set(password, forKey: "password");
                         DispatchQueue.main.async { [weak self] in
+                            let userDefaults = UserDefaults.standard;
+                            userDefaults.set(1,forKey: "sessionType")
+                            userDefaults.set(true,forKey: "logged")
+                            userDefaults.set(self?.phoneField.text,forKey: "Phone")
+                            userDefaults.synchronize()
                             self?.performSegue(withIdentifier: "loginToPatient", sender: (Any).self )
                         }
                     }
@@ -107,9 +112,12 @@ class LoginPageViewController: UIViewController {
                     let httpResponse = response as? HTTPURLResponse
                     print(httpResponse as Any)
                     if (httpResponse?.statusCode == 200){
-                        UserDefaults.standard.set(phone, forKey: "Phone");
-                        UserDefaults.standard.set(password, forKey: "password");
                         DispatchQueue.main.async { [weak self] in
+                            let userDefaults = UserDefaults.standard;
+                            userDefaults.set(2,forKey: "sessionType")
+                            userDefaults.set(true,forKey: "logged")
+                            userDefaults.set(self?.phoneField.text,forKey: "Phone")
+                            userDefaults.synchronize()
                             self?.performSegue(withIdentifier: "loginToCaregiver", sender: (Any).self )
                         }
                     }

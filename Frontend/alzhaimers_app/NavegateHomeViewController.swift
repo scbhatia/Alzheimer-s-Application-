@@ -35,14 +35,21 @@ class NavegateHomeViewController:UIViewController, CLLocationManagerDelegate, MK
     
     var geocoder = CLGeocoder()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let userDefaults = UserDefaults.standard;
-        let home = userDefaults.object(forKey: "homeAddress") as! String;
-        destAddress.text = "Home Address: " + home;
-        dest_address = home
+        if (userDefaults.object(forKey: "homeAddress") != nil){
+            let home = userDefaults.object(forKey: "homeAddress") as! String;
+            destAddress.text = "Home Address: " + home;
+            dest_address = home
+        }
         headtoHome()
         mapView.delegate = self
+    }
+    @IBAction func doneBtn(_ sender: Any) {
+        self.performSegue(withIdentifier: "gotHome", sender: Any?.self)
     }
     
     func headtoHome() {

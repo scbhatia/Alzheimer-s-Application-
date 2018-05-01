@@ -23,6 +23,7 @@ class RegisterPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true 
         self.title = "Register"
         // Do any additional setup after loading the view.
     }

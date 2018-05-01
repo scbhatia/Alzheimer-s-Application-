@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240EB1062098AE2D00A7BB44 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240EB1052098AE2D00A7BB44 /* RemindersViewController.swift */; };
 		241CF58520699CA5000A46B0 /* PatientHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241CF58420699CA5000A46B0 /* PatientHomeViewController.swift */; };
 		241CF589206C3AA6000A46B0 /* HomeCaregiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241CF588206C3AA6000A46B0 /* HomeCaregiverViewController.swift */; };
 		243D4B34207E740C00A18613 /* SendMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243D4B33207E740C00A18613 /* SendMemoryViewController.swift */; };
 		24699E76207BB85100131DDF /* SendReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24699E75207BB85100131DDF /* SendReminderViewController.swift */; };
+		2498290920969A1600474CEB /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2498290820969A1500474CEB /* TrackingViewController.swift */; };
+		2498290B2096A49800474CEB /* BackgoundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2498290A2096A49800474CEB /* BackgoundTask.swift */; };
 		24AAF645208E357B00CA5D08 /* NavegateHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAF644208E357B00CA5D08 /* NavegateHomeViewController.swift */; };
+		24AAF64A2093A60500CA5D08 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAF6492093A60500CA5D08 /* WelcomeViewController.swift */; };
 		24D949B22059846800A457AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D949B12059846800A457AB /* AppDelegate.swift */; };
 		24D949B42059846800A457AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D949B32059846800A457AB /* ViewController.swift */; };
 		24D949B72059846800A457AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D949B52059846800A457AB /* Main.storyboard */; };
@@ -21,6 +25,7 @@
 		24D949D22059846B00A457AB /* alzhaimers_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D949D12059846B00A457AB /* alzhaimers_appUITests.swift */; };
 		24D949E0205EF42C00A457AB /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D949DF205EF42B00A457AB /* RegisterPageViewController.swift */; };
 		24D949E4205F028B00A457AB /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D949E3205F028B00A457AB /* LoginPageViewController.swift */; };
+		24D9F3B9209776F400D6ECE0 /* MemoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D9F3B8209776F400D6ECE0 /* MemoriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,11 +46,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		240EB1052098AE2D00A7BB44 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RemindersViewController.swift; path = alzhaimers_app/RemindersViewController.swift; sourceTree = "<group>"; };
 		241CF58420699CA5000A46B0 /* PatientHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PatientHomeViewController.swift; path = ../PatientHomeViewController.swift; sourceTree = "<group>"; };
 		241CF588206C3AA6000A46B0 /* HomeCaregiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCaregiverViewController.swift; path = ../HomeCaregiverViewController.swift; sourceTree = "<group>"; };
 		243D4B33207E740C00A18613 /* SendMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMemoryViewController.swift; sourceTree = "<group>"; };
 		24699E75207BB85100131DDF /* SendReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReminderViewController.swift; sourceTree = "<group>"; };
+		2498290820969A1500474CEB /* TrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrackingViewController.swift; path = alzhaimers_app/TrackingViewController.swift; sourceTree = "<group>"; };
+		2498290A2096A49800474CEB /* BackgoundTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgoundTask.swift; sourceTree = "<group>"; };
 		24AAF644208E357B00CA5D08 /* NavegateHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavegateHomeViewController.swift; sourceTree = "<group>"; };
+		24AAF6492093A60500CA5D08 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		24D949AE2059846800A457AB /* alzhaimers_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alzhaimers_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D949B12059846800A457AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24D949B32059846800A457AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +70,7 @@
 		24D949D32059846B00A457AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24D949DF205EF42B00A457AB /* RegisterPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		24D949E3205F028B00A457AB /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
+		24D9F3B8209776F400D6ECE0 /* MemoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +108,10 @@
 		24D949A52059846800A457AB = {
 			isa = PBXGroup;
 			children = (
+				240EB1052098AE2D00A7BB44 /* RemindersViewController.swift */,
+				24D9F3B8209776F400D6ECE0 /* MemoriesViewController.swift */,
+				2498290A2096A49800474CEB /* BackgoundTask.swift */,
+				2498290820969A1500474CEB /* TrackingViewController.swift */,
 				24D949B02059846800A457AB /* alzhaimers_app */,
 				24D949C52059846B00A457AB /* alzhaimers_appTests */,
 				24D949D02059846B00A457AB /* alzhaimers_appUITests */,
@@ -124,6 +138,7 @@
 				24699E75207BB85100131DDF /* SendReminderViewController.swift */,
 				241CF588206C3AA6000A46B0 /* HomeCaregiverViewController.swift */,
 				241CF58420699CA5000A46B0 /* PatientHomeViewController.swift */,
+				24AAF6492093A60500CA5D08 /* WelcomeViewController.swift */,
 				24D949B12059846800A457AB /* AppDelegate.swift */,
 				24D949B32059846800A457AB /* ViewController.swift */,
 				24D949B52059846800A457AB /* Main.storyboard */,
@@ -291,6 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				24D949B42059846800A457AB /* ViewController.swift in Sources */,
+				24AAF64A2093A60500CA5D08 /* WelcomeViewController.swift in Sources */,
+				2498290920969A1600474CEB /* TrackingViewController.swift in Sources */,
+				2498290B2096A49800474CEB /* BackgoundTask.swift in Sources */,
 				24D949E4205F028B00A457AB /* LoginPageViewController.swift in Sources */,
 				24AAF645208E357B00CA5D08 /* NavegateHomeViewController.swift in Sources */,
 				24D949B22059846800A457AB /* AppDelegate.swift in Sources */,
@@ -299,6 +317,8 @@
 				24D949E0205EF42C00A457AB /* RegisterPageViewController.swift in Sources */,
 				241CF589206C3AA6000A46B0 /* HomeCaregiverViewController.swift in Sources */,
 				241CF58520699CA5000A46B0 /* PatientHomeViewController.swift in Sources */,
+				24D9F3B9209776F400D6ECE0 /* MemoriesViewController.swift in Sources */,
+				240EB1062098AE2D00A7BB44 /* RemindersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
