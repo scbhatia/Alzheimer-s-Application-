@@ -15,7 +15,7 @@ class SendMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     var newPic: Bool?
-    
+    var imageStr : String?
     
     @IBOutlet weak var datePicker: UIDatePicker!
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class SendMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePi
         let description = descriptionField.text
         let userDefaults = UserDefaults.standard;
         let patPhone = userDefaults.object(forKey: "patientNumber") as! String;
-        sendMemory(phone: patPhone, picture: "photoImageView.image!", date: strDate, title: title!, description: description!)
+        sendMemory(phone: patPhone, picture: "imageStr!", date: strDate, title: title!, description: description!)
     }
     
     //send memory info to database
@@ -125,7 +125,7 @@ class SendMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePi
         let mediaType = info [UIImagePickerControllerMediaType] as! NSString
         if mediaType.isEqual(to: kUTTypeImage as String) {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-            photoImageView.image = image
+            self.photoImageView.image = image
             
             if newPic == true {
                 UIImageWriteToSavedPhotosAlbum(image,self, #selector(imageError), nil )

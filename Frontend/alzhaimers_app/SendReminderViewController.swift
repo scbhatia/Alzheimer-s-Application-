@@ -61,14 +61,14 @@ class SendReminderViewController: UIViewController, UITextFieldDelegate, UIImage
     
     private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info [UIImagePickerControllerMediaType] as! NSString
-     //   if mediaType.isEqual(to: kUTTypeImage as String) {
+        if mediaType.isEqual(to: kUTTypeImage as String) {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             self.photoImageView.image = image
             
             if newPic == true {
                 UIImageWriteToSavedPhotosAlbum(image,self, #selector(imageError), nil )
             }
-       // }
+        }
         self.dismiss(animated: true, completion: nil)
     }
     

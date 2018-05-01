@@ -29,8 +29,9 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
     var memoriesArray : [Memories] = [];
     override func viewDidLoad() {
         super.viewDidLoad()
-        getMemories()
-        // Do any additional setup after loading the view.
+        let userDefaults = UserDefaults.standard;
+        let phone = userDefaults.object(forKey: "Phone") as! String;
+        getMemories(phone: phone)
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,15 +50,15 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     //get memories from backend and populate tableView
-    func getMemories(){
+    func getMemories(phone : String){
         
         let headers = [
             "Content-Type": "application/json",
             "Cache-Control": "no-cache",
             "Postman-Token": "a608eec8-5d59-eb38-9b79-1cd9cedf0236"
         ]
-        
-        let request = NSMutableURLRequest(url: NSURL(string: "http://54.175.126.168:3000/memories/12345")! as URL,
+        let urlStr = "http://54.175.126.168:3000/memories/" + phone
+        let request = NSMutableURLRequest(url: NSURL(string: urlStr)! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "GET"
