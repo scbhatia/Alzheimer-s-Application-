@@ -3,13 +3,18 @@ var app             =   express();
 var bodyParser      =   require("body-parser");
 var mongoOp         =   require("./model/mongo");
 var mems            =   require("./model/memories");
-var rems            =   require("./model/reminders");
+var rem             =   require("./model/reminders");
 var momentTimeZone  =   require('moment-timezone');
 var moment          =   require('moment');
 var router          =   express.Router();
+var Twilio          =   require("twilio");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
+
+var twilioAccountSid='AC5cc5db3a5ff30e8fc43bf107e135be10'
+var twilioAuthToken='9f72a387d392dab2695f193da75efa43'
+var twilioPhoneNumber='+12156080357'
 
 ///////////////////////// User Management System (DONE) ////////////////////////////////
 router.route("/users")
@@ -160,8 +165,27 @@ router.route("/memories")
         const timeZone = req.body.timeZone;
         const time = moment(req.body.time, 'MM-DD-YYYY hh:mma');
         
+        const client = new Twilio(twilioAccountSid, twilioAuthToken);
+        // Create options to send the message
+        const options = {
+            to: `+ ${pat_phone}`,
+            from: twilioPhoneNumber,
+            /* eslint-disable max-len */
+            body: `Hi. Just a reminder that you have an appointment coming up.`,
+            /* eslint-enable max-len */
+        };
+
+        // Send the message!
+        client.messages.create(options, function(err, response) {
+            if (err) {
+                // Just log it for now
+                console.error(err);
+            } else {
+            }
+        });
+
         const mem = new mems({pat_phone: pat_phone, pic_path: pic_path, message: message, timeZone: timeZone, time: time});
-        rem.save(function(err){
+        mem.save(function(err){
             if (err) {
                res.status(400).send({"message": "Uh oh, something went wrong"});
             }
