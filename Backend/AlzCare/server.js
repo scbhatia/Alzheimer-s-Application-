@@ -122,11 +122,12 @@ router.route("/reminders")
 
         const pat_phone = req.body.phone; 
         const pic_path = req.body.picture;
-        const med_name = req.body.med_name;
+        const title = req.body.title;
+        const description = req.body.description;
         const timeZone = req.body.timeZone;
         const time = moment(req.body.time, 'MM-DD-YYYY hh:mm');
         
-        const rem = new rems({pat_phone: pat_phone, pic_path: pic_path, med_name: med_name, timeZone: timeZone, time: time});
+        const rem = new rems({pat_phone: pat_phone, pic_path: pic_path, title: title, description: description, timeZone: timeZone, time: time});
         rem.save(function(err){
             if (err) {
                 throw err;
@@ -161,6 +162,7 @@ router.route("/memories")
 
         const pat_phone = req.body.phone; 
         const pic_path = req.body.picture;
+        const title = req.body.title;
         const message = req.body.message;
         const timeZone = req.body.timeZone;
         const time = moment(req.body.time, 'MM-DD-YYYY hh:mma');
@@ -168,10 +170,10 @@ router.route("/memories")
         const client = new Twilio(twilioAccountSid, twilioAuthToken);
         // Create options to send the message
         const options = {
-            to: `+ ${pat_phone}`,
+            to: `+ 1${pat_phone}`,
             from: twilioPhoneNumber,
             /* eslint-disable max-len */
-            body: `Hi. Just a reminder that you have an appointment coming up.`,
+            body: `${title} ${message}`,
             /* eslint-enable max-len */
         };
 
@@ -184,7 +186,7 @@ router.route("/memories")
             }
         });
 
-        const mem = new mems({pat_phone: pat_phone, pic_path: pic_path, message: message, timeZone: timeZone, time: time});
+        const mem = new mems({pat_phone: pat_phone, pic_path: pic_path, title: title, message: message, timeZone: timeZone, time: time});
         mem.save(function(err){
             if (err) {
                res.status(400).send({"message": "Uh oh, something went wrong"});
