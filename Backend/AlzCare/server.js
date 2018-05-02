@@ -8,6 +8,7 @@ var momentTimeZone  =   require('moment-timezone');
 var moment          =   require('moment');
 var router          =   express.Router();
 var Twilio          =   require("twilio");
+var scheduler       =   require("./scheduler");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
@@ -353,3 +354,5 @@ app.use('/',router);
 
 app.listen(3000);
 console.log("Listening to PORT 3000");
+scheduler.start();
+module.exports = app;

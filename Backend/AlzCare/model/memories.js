@@ -6,6 +6,7 @@ var mongoSchema =   mongoose.Schema;
 var mems  = {
     "pat_phone" : String,
     "pic_path" : String,
+    "title": String,
     "message" : String,
     "timeZone": String,
     "time": {type: Date, index: true}

@@ -1,13 +1,11 @@
 'use strict';
 
-var mems = require('../models/memories');
-var rems = require('../models/reminders');
+var Reminders   =   require("./model/reminders");
 
 const notificationWorkerFactory = function() {
     return {
         run: function() {
-            mems.sendNotifications();
-            rems.sendNotifications();
+            Reminders.sendNotifications();
         },
     };
 };
