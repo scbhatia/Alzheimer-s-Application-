@@ -12,9 +12,9 @@ var Twilio          =   require("twilio");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
 
-var twilioAccountSid='AC5cc5db3a5ff30e8fc43bf107e135be10'
-var twilioAuthToken='9f72a387d392dab2695f193da75efa43'
-var twilioPhoneNumber='+12156080357'
+var twilioAccountSid='YOUR TWILIO ACCOUNT SID HERE'
+var twilioAuthToken='YOUR TWILIO AUTH TOKEN HERE'
+var twilioPhoneNumber='YOUR TWILIO PHONE NUMBER HERE'
 
 ///////////////////////// User Management System (DONE) ////////////////////////////////
 router.route("/users")
